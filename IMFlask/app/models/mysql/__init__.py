@@ -76,8 +76,9 @@ def mysql_init():
         cur.execute(sql)
         # Create ADMIN Data
         sql = '''
-            INSERT INTO user(id, pw) VALUES (%s, %s);
+            INSERT IGNORE INTO user(id, pw) VALUES (%s, %s);
         '''
+        sql = sql.format(admin_id=current_app.config['ADMIN_ID'])
         cur.execute(sql, 
             (
                 current_app.config['ADMIN_ID'], 
