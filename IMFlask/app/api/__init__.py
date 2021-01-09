@@ -17,7 +17,12 @@ def init_app(app):
     @app.before_request
     def before_request():
         '''HTTP 요청이 들어올때 마다'''
-        get_mysql_cur(store_g=True)
+        if app.config['DB_PROXY'] in ['mysql', 'all']:
+            get_mysql_cur(store_g=True)
+        if app.config['DB_PROXY'] in ['mongodb', 'all']:
+            get_mongo_cur(store_g=True)
+        if app.config['DB_PROXY'] in ['redis', 'all']:
+            get_redis_cur(store_g=True)
 
     @app.after_request
     def after_request(response):
@@ -35,7 +40,12 @@ def init_app(app):
     @app.teardown_request
     def teardown_request(exception):
         '''HTTP 요청이 끝나고 브라우저에 응답하기 전에'''
-        close_mysql_cur()
+        if app.config['DB_PROXY'] in ['mysql', 'all']:
+            close_mysql_cur()
+        if app.config['DB_PROXY'] in ['mongodb', 'all']:
+            close_mongo_cur()
+        if app.config['DB_PROXY'] in ['redis', 'all']:
+            close_redis_cur()
 
     @app.teardown_appcontext
     def teardown_appcontext(exception):

@@ -11,18 +11,21 @@ class Config:
     '''공통 Config'''
     JWT_SECRET_KEY = os.environ.get('FLASK_JWT_SECRET_KEY')
     TEST_ACCESS_TOKEN = os.environ.get('FLASK_TEST_ACCESS_TOKEN')
-
     ADMIN_ID = os.environ.get('FLASK_ADMIN_ID', "iml")
     ADMIN_PW = os.environ.get('FLASK_ADMIN_PW', "iml")
 
-    MYSQL_URI = os.environ.get('FLASK_MYSQL_URI')
+    # DB_PROXY: basic, mysql, mongodb, redis, all
+    DB_PROXY = os.environ.get('FLASK_DB_PROXY')
 
-    MONGO_URI = os.environ.get('FLASK_MONGO_URI')
-    MONGO_DB_NAME = os.environ.get('FLASK_MONGO_DB_NAME')
-
-    REDIS_HOST = os.environ.get('FLASK_REDIS_HOST')
-    REDIS_PORT = os.environ.get('FLASK_REDIS_PORT')
-    REDIS_PW = os.environ.get('FLASK_REDIS_PW')
+    if DB_PROXY in ['mysql', 'all']:
+        MYSQL_URI = os.environ.get('FLASK_MYSQL_URI')
+    if DB_PROXY in ['mongodb', 'all']:
+        MONGO_URI = os.environ.get('FLASK_MONGO_URI')
+        MONGO_DB_NAME = os.environ.get('FLASK_MONGO_DB_NAME')
+    if DB_PROXY == ['reids', 'all']:
+        REDIS_HOST = os.environ.get('FLASK_REDIS_HOST')
+        REDIS_PORT = os.environ.get('FLASK_REDIS_PORT')
+        REDIS_PW = os.environ.get('FLASK_REDIS_PW')
 
     ALLOWED_EXTENSION = {'txt', 'docs', 'md', 'hwp', 'ppt', 'pptx'}
     SLOW_API_TIME = 0.5

@@ -9,7 +9,8 @@
 
 
 
-## TO DO 
+## TO DO
+- model 의존성 주입을 위한 프록시 클래스
 - 커버리지 적용하기
 - 인스턴스 사용해보기
 
@@ -34,19 +35,24 @@ Flask extension는 유용하지만 몇가지 문제가 있다고 생각했습니
 따라서 Flask 및 Python 자체에서 기본적으로 지원하는 기능을 충실히 활용하도록 노력했습니다.
 
 
+### 의존성 주입을 통한 model 클래스의 독립성 확보
+
+해당 repo의 3개의 DBMS와의 연동 코드가 작성되어 있지만, 간편한 실행을 위해 기본 옵션으로는 mysql만을 사용합니다.
+
+Controller 영역와 Model 영역의 Proxy 클래스를 두어 중개하는 것으로 각기 다른 영역에서 서로의 의존성을 줄일 수 있습니다.
+
+config의 옵션을 수정하는 것으로, Proxy 클래스에 원하는 DB Model를 주입시킬 수 있습니다.
+
 
 ### 저수준의 DB 드라이버를 사용하자
 
-해당 코드는 RDBMS, NoSQL(Document based, Key-value based) 등의 **총 3가지의 DB(MySQL, MongoDB, Redis)**와 연동한 예제 코드가 작성되어 있습니다. 
-
-단, 해당 repo는 MySQL 서버만 실행중일 경우, 실행이 가능합니다.
+해당 코드는 RDBMS, NoSQL(Document based, Key-value based) 등의 **총 3가지의 DB(MySQL, MongoDB, Redis)**와 연동한 간단한 예제 코드가 작성되어 있습니다. 
 
 모든 DB단 연동 코드에는 **ORM, ODM과 같은 Database Abstraction Module을 사용하지 않았습니다.**
 
 당연히 Large Scale이라면, Abstraction을 사용하는게 보편적이지만, 저는 공부하는 입장에서 제가 직접 DB까지 전달되는 처리를 가능한 한 자세하게 관여할 수 있도록 구조를 구현하였습니다.
 
-또한 저 자신이 공부가 부족해서인지 아직, 이러한 Abstraction에 대한 중요성이 와닿지 않아서 적용시키지 않았습니다. (+사실 괜히 DB를 3개나 연결시켰나? 싶어서 수정할까 고민중입니다...)
-
+또한 저 자신이 공부가 부족해서인지 아직, 이러한 Abstraction에 대한 중요성이 와닿지 않아서 적용시키지 않았습니다.
 
 
 ### view 함수가 비대해지는 것을 최대한 막자

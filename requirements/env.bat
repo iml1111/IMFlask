@@ -1,7 +1,15 @@
 set FLASK_JWT_SECRET_KEY=hard to guess string
 set FLASK_TEST_ACCESS_TOKEN=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTkzODMxMjUsIm5iZiI6MTU5OTM4MzEyNSwianRpIjoiNGM5NGNiMTMtM2E5Yy00ZjczLWE3ODEtZmRmY2YxNzI2MTQ4IiwiaWRlbnRpdHkiOiJpbWwiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.3GM5F1vO7ZP3iaOuO94HCZwlBLjRkbBjPs4ytiO5Hd8
+set FLASK_DB_PROXY=mysql
 
 set FLASK_MYSQL_URI=mysql://root:imiml@localhost:3306/imldb
+
+set FLASK_MONGO_URI=mongodb://root:password@localhost:27037
+set FLASK_MONGO_DB_NAME=imldb
+
+set FLASK_REDIS_HOST=localhost
+set FLASK_REDIS_PORT=6379
+set FLASK_REDIS_PW=password
 
 set FLASK_ADMIN_ID=iml
 set FLASK_ADMIN_PW=iml
