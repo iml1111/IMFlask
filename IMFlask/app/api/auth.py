@@ -3,9 +3,12 @@ Auth API routes
 '''
 from flask import Blueprint, request, g
 from app.api import input_check
-from app.api.decorators import login_required, admin_required, login_optional
 from app.controllers.user_con import create_user
 from app.controllers.user_con import signin
+from app.api.decorators import (login_required,
+                                admin_required,
+                                login_optional,
+                                timer)
 
 auth = Blueprint('auth', __name__)
 
@@ -41,21 +44,33 @@ def api_signin():
 
 
 @auth.route("/login_test")
+@timer
 @login_required
 def api_login_test():
     '''로그인 테스트 API'''
-    return "Hello, " + str(g.user_id)
+    return {
+        "msg": "success",
+        "result": "Hello, " + str(g.user_id),
+    }
 
 
 @auth.route("/login_optional_test")
+@timer
 @login_optional
 def api_login_optional_test():
     '''로그인 옵셔널 테스트 API'''
-    return "Hello, " + str(g.user_id)
+    return {
+        "msg": "success",
+        "result": "Hello, " + str(g.user_id),
+    }
 
 
 @auth.route("/admin_test")
+@timer
 @admin_required
 def api_admin_test():
     '''관리자 테스트 API'''
-    return "Admin, " + str(g.user_id)
+    return {
+        "msg": "success",
+        "result": "Admin, " + str(g.user_id),
+    }
