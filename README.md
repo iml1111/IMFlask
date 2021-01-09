@@ -7,6 +7,12 @@
 
 피드백은 적극적으로 환영합니다.
 
+해당 repo는 제가 만든 IMFlask 구조로 간단한 어플리케이션을 만들어본 예제입니다.
+
+실제로 템플릿을 사용하고 싶으시다면, 아래의 링크를 참조해주세요.
+
+https://github.com/iml1111/IMFlask-boilerplate
+
 
 
 ## TO DO
