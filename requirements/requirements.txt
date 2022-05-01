@@ -1,0 +1,16 @@
+click
+Faker
+Flask
+flask-validation-extended
+importlib-metadata
+itsdangerous
+Jinja2
+MarkupSafe
+pymongo
+python-dateutil
+python-dotenv
+six
+text-unidecode
+typing-extensions
+Werkzeug
+zipp
