@@ -15,11 +15,8 @@ FLASK_CONFIG = os.getenv('FLASK_CONFIG') or 'development'
 class Config:
     '''General Config'''
     SLOW_API_TIME = 0.5
-    API_LOGGING = False
     JSON_AS_ASCII = False
     SECRET_KEY = "top-secret"
-    MONGODB_URI = os.environ[APP_NAME + "_MONGODB_URI"]
-    MONGODB_NAME = os.environ[APP_NAME + "_MONGODB_NAME"]
     # API 타이머 출력 경로 (response, log, none)
     TIMER_OUTPUT = os.getenv('TIMER_OUTPUT', 'response')
 

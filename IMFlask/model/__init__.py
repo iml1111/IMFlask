@@ -2,18 +2,13 @@
 Application Model
 """
 from flask import Flask
+from controller import log
 from config import APP_NAME
-from model import mongodb
 
 
 def register_connection_pool(app: Flask):
-    app.db = mongodb.get_cursor()
-
+    pass
 
 def init_app(config):
     """Model Init Function"""
-
-    # MongoDB Init
-    initializer = mongodb.ModelInitializer()
-    initializer.init_model()
-    print("[%s] MongoDB Initialization Completed." % APP_NAME)
+    log.warning('No DB Initialized.')

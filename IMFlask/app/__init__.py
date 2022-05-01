@@ -4,7 +4,6 @@ Application Factory Module
 from datetime import datetime
 from flask import Flask, _app_ctx_stack
 from flask.json import JSONEncoder
-from bson.objectid import ObjectId
 from app import api
 from app.api.template import template as template_bp
 from app.api.error_handler import error_handler as error_bp
@@ -16,8 +15,6 @@ class CustomJSONEncoder(JSONEncoder):
     def default(self, obj):
         if isinstance(obj, datetime):
             return obj.strftime("%Y-%m-%d %H:%m:%S")
-        elif isinstance(obj, ObjectId):
-            return str(obj)
         else:
             return super().default(obj)
 
