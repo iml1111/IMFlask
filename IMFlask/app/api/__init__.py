@@ -2,7 +2,6 @@
 API Request Handler and util
 """
 from flask import Flask, g, current_app, request, Response
-from model.mongodb import Log
 
 
 def init_app(app: Flask):
@@ -33,21 +32,6 @@ def init_app(app: Flask):
                 f"body: {body}\n"
                 f"slow time: {g.process_time}\n"
             )
-
-        # API Logging
-        if config['API_LOGGING']:
-            if isinstance(response, Response):
-                status_code = response.status_code
-            else:
-                status_code = response[1]
-
-            Log().insert_log({
-                'ipv4': request.remote_addr,
-                'url': request.full_path,
-                'method': request.method,
-                'params': request.data.decode(),
-                'status_code': status_code
-            })
 
         return response
 
