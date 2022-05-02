@@ -4,23 +4,25 @@
 
 **Boilerplate for Large Scale Flask Web Backend Structure (Edited 2022-05-03)**
 
-This is boilerplate, assuming you are building a large-scale application server using Flask.
+Flask를 사용하여 대규모 어플리케이션 서버를 구축한다고 가정했을 때의 Baseline 코드입니다.
 
-I look forward to your feedback.
+여러 오픈 소스를 읽어보고 제 몸에 와닿는 직관적인 부분만 반영한 것이라 부족한 점이 많습니다.
+
+피드백은 적극 환영합니다.
 
 ## Dependency
 
 - python 3.6+
 
-- Flask >= 2.1.2
-- flask-validation-extended >= 0.1.7
-- python-dotenv >= 0.20.0
+- Flask==2.1.2
+- flask-validation-extended==0.1.7
+- python-dotenv==0.20.0
 
 ## Environment variables
 
-To run the application, you need to set the following environment variables.  
+어플리케이션을 실행하기 위해서는 아래와 같은 환경 변수 설정이 필요합니다.
 
-For the dotenv library, you can write an .env file in the same path as config.py, or you can directly enter an environment variable.
+dotenv 라이브러리를 위해 config.py와 같은 경로에 .env 파일을 작성하셔도 되고, 직접 환경변수를 입력하셔도 상관없습니다.
 
 ```shell
 FLASK_APP=manage:application
@@ -29,6 +31,8 @@ FLASK_CONFIG=development
 ```
 
 ## Get Started
+
+운영체제마다 세부적인 실행방법이 다를 수 있습니다. 
 
 ```shell
 # Get Repository
@@ -55,7 +59,7 @@ $ flask run
 
 ## Flask Extended Example
 
-You can apply the Flask Extend library in app/\__init\__.py.
+app/\__init\__.py에서 Flask Extend 라이브러리를 적용할 수 있습니다.
 
 ```python
 ...
@@ -77,26 +81,26 @@ def create_app(config):
 
 ### Application Factory
 
-Applications should operate differently at development, testing, and production levels.
+어플리케이션은 개발(development), 테스팅(Testing), 상용(Production) Level에서 다르게 동작해야 한다.
 
-### Avoid Flask Extension
+### Flask Extension을 지양하자
 
-Avoid Flask extension as much as possible and implement feature based on Basic Python.
+Flask extension는 최대한 지양하고 Basic Python 기반으로 기능을 충실히 구현하자.
 
-However, [flask-validation-extended](https://github.com/iml1111/flask-validation-extended) is a good library. :)
+하지만, [flask-validation-extended](https://github.com/iml1111/flask-validation-extended)는 좋은 라이브러리입니다. :)
 
-### Dependency Separation
+### 의존성 분리
 
-All Controllers and Models must be independently executable except for API endpoint functions.
+Api endpoint 단 함수를 제외한 **모든 Controller 및 Model들은 독립적으로 실행이 가능해야 한다.**
 
 
-### No Database Abstraction
+### 저수준의 DB 드라이버를 사용하자
 
-Do not use Database Abstraction Module such as ORM or ODM for all DB interface code.
+모든 DB단 연동 코드에는 **ORM, ODM과 같은 Database Abstraction Module을 사용하지 말자.**
 
-### RESTful friendly
+### 할 수 있는 만큼 RESTful를 지향하자
 
-Take it as RESTful as possible, but don't overdo it.
+가능한한 RESTful스럽게 가져가되, 무리하지는 말자.
 
 # Directories
 
