@@ -6,10 +6,6 @@ from flask import Flask, g, current_app, request, Response
 
 def init_app(app: Flask):
 
-    @app.before_first_request
-    def before_first_request():
-        pass
-
     @app.before_request
     def before_request():
         pass

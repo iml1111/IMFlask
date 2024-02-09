@@ -13,7 +13,7 @@ FLASK_CONFIG = os.getenv('FLASK_CONFIG') or 'development'
 
 
 class Config:
-    '''General Config'''
+    '''General Config.'''
     SLOW_API_TIME = 0.5
     JSON_AS_ASCII = False
     SECRET_KEY = "top-secret"
